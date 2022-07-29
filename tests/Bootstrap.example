@@ -1,0 +1,16 @@
+<?php
+
+declare(strict_types=1);
+
+use GAState\Tools\D2L\D2L;
+
+require __DIR__ . '/../vendor/autoload.php';
+
+$d2l = new D2L(
+    host: 'https://gastate.view.usg.edu',
+    appID: 'APP_ID_GOES_HERE',
+    appKey: 'APP_KEY_GOES_HERE',
+    userID: 'USER_ID_GOES_HERE',
+    userKey: 'USER_KEY_GOES_HERE',
+    rootOrgUnit: 1070555,
+); 
