@@ -26,28 +26,28 @@ main: {
 
         //var_dump($usersAPI->getUserRole(774));
 
-        $user1 = new CreateUserDataModel();
-        $user1->FirstName = 'BatchTestUserFirstName';
-        $user1->LastName = 'BatchTestUserLastName';
-        $user1->UserName = 'BatchTestUserName';
-        $user1->RoleId = 775;
-        $user1->IsActive = true;
+        // $user1 = new CreateUserDataModel();
+        // $user1->FirstName = 'BatchTestUserFirstName';
+        // $user1->LastName = 'BatchTestUserLastName';
+        // $user1->UserName = 'BatchTestUserName';
+        // $user1->RoleId = 775;
+        // $user1->IsActive = true;
 
-        $user2 = new CreateUserDataModel();
-        $user2->FirstName = 'BatchTestUserFirstName2';
-        $user2->LastName = 'BatchTestUserLastName2';
-        $user2->UserName = 'BatchTestUserName2';
-        $user2->RoleId = 775;
-        $user2->IsActive = true;
+        // $user2 = new CreateUserDataModel();
+        // $user2->FirstName = 'BatchTestUserFirstName2';
+        // $user2->LastName = 'BatchTestUserLastName2';
+        // $user2->UserName = 'BatchTestUserName2';
+        // $user2->RoleId = 775;
+        // $user2->IsActive = true;
         
-        $usersArray[] = $user1;
-        $usersArray[] = $user2;
+        // $usersArray[] = $user1;
+        // $usersArray[] = $user2;
 
-        $test = $usersAPI->createUserBatch($usersArray);
+        // $test = $usersAPI->createUserBatch($usersArray);
 
-        var_dump($test);
+        // var_dump($test);
 
-
+        var_dump($usersAPI->getUsers(externalEmail: "hnaladala1@student.gsu.edu"));
 
     } catch (D2LResponseException $ex) {
         var_dump($ex->getMessage(), $ex->response->statusCode, $ex->response->data);

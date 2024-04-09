@@ -77,15 +77,23 @@ class UsersAPI extends D2LAPI
     /**
      * Retrieve data for all users.
      * 
+     * @param string|null $orgDefinedId Org-defined identifier to look for.
+     * @param string|null $userName User name to look for.
+     * @param string|null $externalEmail External email address to look for.
      * @param string $bookmark Bookmark to use for fetching next data set segment.
      * 
      * @return PagedResultSetModel
      * 
      * @see https://docs.valence.desire2learn.com/res/user.html#get--d2l-api-lp-(version)-users-
      */
-    public function getUsers(string $bookmark = ''): PagedResultSetModel
+    public function getUsers(
+        ?string $orgDefinedId = null,
+        ?string $userName = null,
+        ?string $externalEmail = null,
+        string $bookmark = ''
+    ): PagedResultSetModel
     {
-        $params = ['bookmark' => $bookmark];
+        $params = get_defined_vars();
         $response = $this->callAPI(
             product: 'lp',
             action: 'GET',
