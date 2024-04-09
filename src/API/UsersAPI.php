@@ -75,25 +75,46 @@ class UsersAPI extends D2LAPI
     }
 
     /**
-     * Retrieve data for all users.
-     * 
+     * Retrieve data for users by Parameter
      * @param string|null $orgDefinedId Org-defined identifier to look for.
      * @param string|null $userName User name to look for.
      * @param string|null $externalEmail External email address to look for.
+     * @param string $bookmark Bookmark to use for fetching next data set segment.
+     * 
+     * @return array<int, UserDataModel>
+     * 
+     * @see https://docs.valence.desire2learn.com/res/user.html#get--d2l-api-lp-(version)-users-
+     */
+    public function getUsersByParameter(
+        ?string $orgDefinedId = null,
+        ?string $userName = null,
+        ?string $externalEmail = null,
+        string $bookmark = ''
+    ): array
+    {
+        $params = get_defined_vars();
+        $response = $this->callAPI(
+            product: 'lp',
+            action: 'GET',
+            route: '/users/',
+            params: $params
+        );
+
+        return $response->data;
+    }
+
+    /**
+     * Retrieve data for all users.
+     * 
      * @param string $bookmark Bookmark to use for fetching next data set segment.
      * 
      * @return PagedResultSetModel
      * 
      * @see https://docs.valence.desire2learn.com/res/user.html#get--d2l-api-lp-(version)-users-
      */
-    public function getUsers(
-        ?string $orgDefinedId = null,
-        ?string $userName = null,
-        ?string $externalEmail = null,
-        string $bookmark = ''
-    ): PagedResultSetModel
+    public function getUsers(string $bookmark = ''): PagedResultSetModel
     {
-        $params = get_defined_vars();
+        $params = ['bookmark' => $bookmark];
         $response = $this->callAPI(
             product: 'lp',
             action: 'GET',

@@ -47,7 +47,8 @@ main: {
 
         // var_dump($test);
 
-        var_dump($usersAPI->getUsers(externalEmail: "hnaladala1@student.gsu.edu"));
+        var_dump($usersAPI->getUsersByParameter(externalEmail: "jbarger@gsu.edu"));
+
 
     } catch (D2LResponseException $ex) {
         var_dump($ex->getMessage(), $ex->response->statusCode, $ex->response->data);
